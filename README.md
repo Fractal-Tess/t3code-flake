@@ -48,11 +48,13 @@ T3 Code needs at least one authenticated provider CLI, such as Codex, Claude Cod
 
 ## Update
 
-Update `version`, release URLs, and hashes in [`packages/t3code.nix`](packages/t3code.nix), then run:
+The daily [update workflow](.github/workflows/update.yml) checks the latest stable upstream release, refreshes both Linux hashes, builds the package, and commits a validated update. Run the same process locally with:
 
 ```sh
-nix flake check
+./scripts/update.sh
 ```
+
+Pass a stable version such as `./scripts/update.sh 0.0.42` to update to a specific release. The workflow can also be started manually from GitHub Actions.
 
 ## Credits
 
