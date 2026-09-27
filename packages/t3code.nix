@@ -60,6 +60,10 @@ appimageTools.wrapType2 {
       --prefix XDG_DATA_DIRS : "$out/share"
   '';
 
+  passthru = {
+    inherit appimageContents;
+  };
+
   meta = {
     description = "Agentic coding interface for running coding agents on your machine";
     homepage = "https://t3.codes";

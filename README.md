@@ -44,6 +44,27 @@ Use the NixOS or Home Manager module:
 
 The module defaults to the flake's `t3code` package. You can override it with `programs.t3code.package`, or use `overlays.default` to expose `pkgs.t3code`.
 
+## Headless server
+
+`t3code-server` runs the server bundled in the AppImage (`t3 serve`) with Node, so you can open T3 Code in a browser or pair other devices with it.
+
+```sh
+nix run github:Fractal-Tess/t3code-flake#server -- serve --host 0.0.0.0
+```
+
+Both modules provide `services.t3code-server`, a systemd user service:
+
+```nix
+services.t3code-server = {
+  enable = true;
+  host = "0.0.0.0"; # default 127.0.0.1
+  port = 3773;
+  # NixOS only: user = "alice"; openFirewall = true;
+};
+```
+
+The service uses T3 Code's default data directory (`~/.t3`) unless `baseDir` is set. Pair a device with `t3 pair`, or read the pairing URL from `journalctl --user -u t3code-server`. On NixOS, set `users.users.<name>.linger = true` to keep it running while you are logged out.
+
 T3 Code needs at least one authenticated provider CLI, such as Codex, Claude Code, Cursor, Grok Build, or OpenCode. See the [upstream installation guide](https://github.com/pingdotgg/t3code/blob/main/docs/user/install.md) for provider setup.
 
 ## Update
