@@ -44,6 +44,23 @@ Use the NixOS or Home Manager module:
 
 The module defaults to the flake's `t3code` package. You can override it with `programs.t3code.package`, or use `overlays.default` to expose `pkgs.t3code`.
 
+### Pair other devices with the desktop app
+
+The desktop app runs its own server. These options configure it declaratively:
+
+```nix
+programs.t3code = {
+  enable = true;
+  serverExposureMode = "network-accessible"; # or "local-only"; null keeps the in-app setting
+  port = 3773;                               # T3CODE_PORT; null scans from 3773
+  firewallInterfaces = [ "wt0" ];            # NixOS only; needs port
+};
+```
+
+`serverExposureMode` is merged into `~/.t3/userdata/desktop-settings.json` each time the app starts, so it wins over the in-app toggle. `cli.enable` (default `true`) also installs the `t3` command, so `t3 pair` works without the headless service.
+
+Don't enable `services.t3code-server` on a machine that runs the desktop app: both use port 3773 and the same `~/.t3` data by default.
+
 ## Headless server
 
 `t3code-server` runs the server bundled in the AppImage (`t3 serve`) with Node, so you can open T3 Code in a browser or pair other devices with it.
@@ -59,7 +76,7 @@ services.t3code-server = {
   enable = true;
   host = "0.0.0.0"; # default 127.0.0.1
   port = 3773;
-  # NixOS only: user = "alice"; openFirewall = true;
+  # NixOS only: user = "alice"; openFirewall = true; firewallInterfaces = [ "wt0" ];
 };
 ```
 

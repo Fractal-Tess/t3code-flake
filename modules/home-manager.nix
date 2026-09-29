@@ -19,7 +19,10 @@ in
 
   config = lib.mkMerge [
     (lib.mkIf cfg.enable {
-      home.packages = [ cfg.package ];
+      home.packages = [
+        (import ./desktop-package.nix { inherit pkgs cfg; })
+      ]
+      ++ lib.optional (cfg.cli.enable && !serverCfg.enable) serverPackage;
     })
 
     (lib.mkIf serverCfg.enable {
