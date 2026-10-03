@@ -7,7 +7,7 @@
 <p align="center">
   <a href="flake.nix"><img src="https://img.shields.io/badge/Nix-flake-5277C3?logo=nixos&logoColor=white" alt="Nix flake" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT license" /></a>
-  <a href="https://github.com/pingdotgg/t3code/releases/tag/v0.0.44"><img src="https://img.shields.io/badge/T3_Code-0.0.44-black" alt="T3 Code 0.0.44" /></a>
+  <a href="https://github.com/pingdotgg/t3code/releases/tag/v0.0.45"><img src="https://img.shields.io/badge/T3_Code-0.0.45-black" alt="T3 Code 0.0.45" /></a>
 </p>
 
 [T3 Code](https://t3.codes) is a desktop interface for running coding agents on your own machine.
@@ -92,7 +92,7 @@ The daily [update workflow](.github/workflows/update.yml) checks the latest stab
 ./scripts/update.sh
 ```
 
-Pass a stable version such as `./scripts/update.sh 0.0.44` to update to a specific release. The workflow can also be started manually from GitHub Actions.
+Pass a stable version such as `./scripts/update.sh 0.0.45` to update to a specific release. The workflow can also be started manually from GitHub Actions.
 
 ## Credits
 
