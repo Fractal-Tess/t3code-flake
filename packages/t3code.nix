@@ -8,16 +8,16 @@
 
 let
   pname = "t3code";
-  version = "0.1.8";
+  version = "0.1.9";
 
   sources = {
     x86_64-linux = {
       asset = "T3-Code-${version}-x86_64.AppImage";
-      hash = "sha256-4Rdpi+TMWeXsFBbFHf1EKlPvoxQZd7wgy9DYH9P9WCQ=";
+      hash = "sha256-0KtW3z4zjyQoSENWISl/2WOjNxWw2CCNvwg5lllXLYE=";
     };
     aarch64-linux = {
       asset = "T3-Code-${version}-arm64.AppImage";
-      hash = "sha256-ai63kc+2C3hPFVGqbR4i0IcMweFVToFXSEYoFvEhZj4=";
+      hash = "sha256-m8HIZp01uUgP3v1lHE/L4eDea+FLSlBorst2MfCPCPU=";
     };
   };
 
